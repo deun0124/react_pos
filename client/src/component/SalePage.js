@@ -45,17 +45,7 @@ function SalePage(props) {
         })
     }
 
-    const handleReset = (id) =>{
-        axios({
-            method : 'POST',
-            url :'/api/reset/' +id,
-            data : {
-                id :id
-            }
-        }).then(props.stateRefresh())
-
-    }
-
+ 
 console.log(props.checked)
 
     return (
@@ -79,9 +69,7 @@ console.log(props.checked)
                         handleSave(props.id)
                     }} >입고</button></TableCell>
                 </TableRow>
-                <Button onClick={(e)=>{
-                    handleReset(props.id)
-                }}>판매관리</Button>
+              
 
           
           

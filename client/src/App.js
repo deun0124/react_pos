@@ -14,6 +14,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import { Checkbox } from '@material-ui/core';
+import e from 'express';
+import Button from '@material-ui/core/Button'
 
 function App() {
 
@@ -93,6 +95,16 @@ const handleCheck=(e)=>{
   console.log(checked)
 }
  
+const handleReset = (e) =>{
+  axios({
+      method : 'POST',
+      url :'/api/reset' ,
+      
+  })
+  stateRefresh()
+
+}
+
 const list = Products.map((c) => {
   return <SalePage stateRefresh={stateRefresh} checked={checked}  id={c.id} name={c.name} barcode={c.barcode} price={c.price} cost={c.cost} stock={c.stock} sale={c.sale} profit={c.profit} purchase={c.purchase} />
 })
@@ -117,7 +129,9 @@ const list = Products.map((c) => {
             {list}
       </Table>
       <RefreshPage stateRefresh={stateRefresh} />
-
+      <Button onClick={(e)=>{
+                    handleReset()
+                }}>판매관리</Button>
     </div>
   );
 }

@@ -59,10 +59,10 @@ app.post('/api/storage/:id',(req, res)=>{
         } 
     )
 })
-app.post('/api/reset/:id',(req, res)=>{
-    let sql = 'update products set sale=0, profit=0, purchase=0 where id=?'
-    let id = req.body.id
-    conn.query(sql, id,
+app.post('/api/reset',(req, res)=>{
+    let sql = 'update products set sale=0, profit=0, purchase=0'
+    
+    conn.query(sql, 
         (err, rows, fields)=>{
             res.send(rows)
         })
