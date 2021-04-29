@@ -44,5 +44,19 @@ app.post('/api/sales',(req, res) =>{
     )
 })
 
+app.post('/api/storage/:id',(req, res)=>{
+    let sql='update products set stock=? where id=?'
+    let stock = req.body.stock
+    let id = req.body.id
+    let params = [stock, id]
+
+    console.log(id, stock)
+
+    conn.query(sql, params, 
+        (err, rows, fields) =>{
+            res.send(rows)
+        } 
+    )
+})
 
 app.listen(port, ()=>console.log(`listening port....${port}`))
