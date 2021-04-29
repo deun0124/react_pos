@@ -33,8 +33,9 @@ app.get('/api/home',(req, res)=>{
    )
 })
 
-app.post('/api/sales',(req, res) =>{
-    let sql = 'update products set stock=stock-1 where barcode=?';
+app.post('/api/home/:barcode',(req, res) =>{
+    let sql = 'update products set stock=stock-1, sale=sale+1, profit=cost*sale, purchase=sale*price where barcode=?';
+
     let barcode = req.body.barcode;
     conn.query(
         sql, barcode,
@@ -57,6 +58,14 @@ app.post('/api/storage/:id',(req, res)=>{
             res.send(rows)
         } 
     )
+})
+app.post('/api/reset/:id',(req, res)=>{
+    let sql = 'update products set sale=0, profit=0, purchase=0 where id=?'
+    let id = req.body.id
+    conn.query(sql, id,
+        (err, rows, fields)=>{
+            res.send(rows)
+        })
 })
 
 app.listen(port, ()=>console.log(`listening port....${port}`))
