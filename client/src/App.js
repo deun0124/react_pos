@@ -14,7 +14,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import { Checkbox } from '@material-ui/core';
-import e from 'express';
+
 import Button from '@material-ui/core/Button'
 
 function App() {
@@ -131,7 +131,7 @@ const list = Products.map((c) => {
       <RefreshPage stateRefresh={stateRefresh} />
       <Button onClick={(e)=>{
                     handleReset()
-                }}>판매관리</Button>
+                }}>초기화</Button>
     </div>
   );
 }

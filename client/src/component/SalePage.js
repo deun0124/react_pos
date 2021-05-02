@@ -65,7 +65,7 @@ console.log(props.checked)
                     <TableCell align="right">{props.profit}</TableCell>
                     <TableCell align="right">{props.purchase}</TableCell>
 
-                    <TableCell align="right"><button onClick={(e) => {
+                    <TableCell align="right"><button disabled={props.checked} onClick={(e) => {
                         handleSave(props.id)
                     }} >입고</button></TableCell>
                 </TableRow>
